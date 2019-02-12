@@ -1,0 +1,27 @@
+---
+title: "TCG4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rvest)
+
+
+weather<- read_html("https://weather.com/weather/monthly/l/USIL0706:1:US")
+
+
+Macomb_weather <- html_table(weather)
+
+
+The_weather_Channel <- data.frame(Macomb_weather)
+
+The_weather_Channel
+
+
+
+```
+
