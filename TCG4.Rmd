@@ -1,0 +1,43 @@
+---
+title: "TCG4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rvest)
+
+#Scraping Html from website
+Rialto_cinemas<-read_html("https://www.imdb.com/showtimes/?ref_=nv_tp_sh_3")
+
+Rialto_cinemas
+
+
+?html_nodes
+
+
+#using selector gadget to figure out input for html_nodes,
+
+title<-Rialto_cinemas%>%html_nodes("#cinemas-at-list span a")%>%html_text()
+title
+
+
+Duration<-Rialto_cinemas%>%html_nodes("time")%>%html_text()
+Duration
+
+
+User_Rating<-Rialto_cinemas%>%html_nodes(".nobr:nth-child(1) strong")%>%html_text()
+User_Rating
+
+
+Movies_in_Rialto<-data.frame(title,Duration,User_Rating)
+Movies_in_Rialto
+
+
+
+
+```
+
